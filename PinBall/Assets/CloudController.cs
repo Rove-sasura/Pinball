@@ -23,7 +23,9 @@ public class CloudController : MonoBehaviour
     void Update()
     {
         //â_ÇägëÂèkè¨
-        this.transform.localScale = new Vector3(this.minimum + Mathf.Sin(Time.time * this.magSpeed) * this.magnification, this.transform.localScale.y, this.minimum + Mathf.Sin(Time.time * this.magSpeed) * this.magnification);
+        this.transform.localScale = new Vector3(this.minimum + Mathf.Sin(Time.time * this.magSpeed) * this.magnification,
+            this.transform.localScale.y,
+            this.minimum + Mathf.Sin(Time.time * this.magSpeed) * this.magnification);
 
     }
 }

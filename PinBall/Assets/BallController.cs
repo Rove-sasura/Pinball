@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BallController : MonoBehaviour
 {
-
     //ボールが見える可能性のあるz軸の最大値
     private float visiblePosZ = -6.5f;
 
@@ -18,8 +17,6 @@ public class BallController : MonoBehaviour
     //得点
     private int score = 0;
 
-
-
     // Use this for initialization
     void Start()
     {
@@ -28,7 +25,6 @@ public class BallController : MonoBehaviour
 
         //シーン中のscoreTextオブジェクトを取得
         this.scoreText = GameObject.Find("ScoreText");
-
     }
 
     // Update is called once per frame
@@ -42,17 +38,26 @@ public class BallController : MonoBehaviour
         }
     }
 
-    //SmallCloudに衝突した場合
-                if (other.gameObject.tag == "SmallCloudTag")
-                
-                        // 得点
-                        score += 10;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "SmallCloudTag")
+        {
+            //加点10点
+            score += 10;
+        }
+        if (collision.gameObject.tag == "LargeCloudTag")
+        {
+            //加点20点
+            score += 20;
+        }
+        if (collision.gameObject.tag == "LargeStarTag")
+        {
+            //加点5点
+            score += 5;
+        }
 
-                        //ScoreText獲得した点数を表示
-                        this.scoreText.GetComponent<Text>().text = "Score " + this.score;
+        //ScoreText獲得した点数を表示
+        this.scoreText.GetComponent<Text>().text = "Score " + this.score;
 
-
-                }
-
-
+    }
 }
